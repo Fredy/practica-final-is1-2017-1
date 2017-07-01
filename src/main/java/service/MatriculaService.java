@@ -15,7 +15,7 @@ public class MatriculaService {
     @Autowired
     MatriculaRepository matriculaRepository;
 
-    public Collection<Object> srchNombre(Long id,String semestre) {
+    public Collection<Object> srchAlumnoMatriculado(Long id,String semestre) {
         return matriculaRepository.srchCursoSemestre(id, semestre);
     }
 }
