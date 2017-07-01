@@ -55,8 +55,8 @@ public class BankController {
 		return "add-account";
 	}
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	String home(ModelMap model) {
-		return "home";
-	}
+	//@RequestMapping(value = "/", method = RequestMethod.GET)
+	//String home(ModelMap model) {
+	//	return "home";
+	//}
 }
