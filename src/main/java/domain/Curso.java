@@ -1,17 +1,25 @@
 package domain;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
 public class Curso implements BaseEntity<Long> {
+
+	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
-
 	private String codigo;
-
 	private String nombre;
-
 	private Integer creditos;
 
-	private List<Curso> prerequisitos;
+	@ManyToMany
+	@JoinTable (
+			name = "cursoPrerrequisitos",
+			joinColumns = @JoinColumn(name="CursoId", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name="PrerrequisitoId", referencedColumnName = "id")
+	)
+	private List<Curso> prerrequisitos;
 
 	@Override
 	public Long getId() {
@@ -48,11 +56,13 @@ public class Curso implements BaseEntity<Long> {
 	}
 
 	public List<Curso> getPrerequisitos() {
-		return prerequisitos;
+		return prerrequisitos;
 	}
 
-	public void setPrerequisitos(List<Curso> prerequisitos) {
-		this.prerequisitos = prerequisitos;
+	public void setPrerequisitos(List<Curso> prerrequisitos) {
+		this.prerrequisitos = prerrequisitos;
 	}
 
+	public Curso() {
+	}
 }
