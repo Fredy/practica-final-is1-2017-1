@@ -2,6 +2,7 @@ package domain;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Vector;
 
 @Entity
 public class Curso implements BaseEntity<Long> {
@@ -64,5 +65,13 @@ public class Curso implements BaseEntity<Long> {
 	}
 
 	public Curso() {
+		prerrequisitos = new Vector<Curso>();
+	}
+
+	public Curso(String codigo, String nombre, Integer creditos) {
+		this.codigo = codigo;
+		this.nombre = nombre;
+		this.creditos = creditos;
+		this.prerrequisitos = new Vector<Curso>();
 	}
 }
